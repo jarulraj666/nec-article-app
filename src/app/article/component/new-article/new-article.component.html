@@ -1,0 +1,23 @@
+
+<form [formGroup]="articleForm" (ngSubmit)="submit()">
+
+
+    
+        <div class="mb-3 mt-3">
+          <label for="title" class="form-label fw-bold">Title:</label>
+          <input type="text" class="form-control" id="title" placeholder="Enter Article title" name="title" formControlName="title">
+          <div *ngIf="getControl['title'].touched && getControl['title'].invalid" class="text-danger">
+            <div *ngIf="getControl['title'].errors && getControl['title'].errors['required']">Article title is required</div>
+          </div>
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="content" class="form-label fw-bold">Content:</label>
+            <textarea rows="15" type="text" class="form-control" id="content" placeholder="Enter Article Content" name="content" formControlName="content"></textarea>
+            <div *ngIf="getControl['content'].touched && getControl['content'].invalid" class="text-danger">
+                <div *ngIf="getControl['content'].errors && getControl['content'].errors['required']">Article Description is required</div>
+              </div>
+        </div>
+        <button type="submit" [disabled]="!articleForm.valid" class="btn btn-primary">Submit</button>
+    
+
+</form>
